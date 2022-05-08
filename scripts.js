@@ -9,14 +9,33 @@ personalMovieDB.genres = new Array();
 personalMovieDB.privat = false;
 
 
-let endFilm = prompt('One the last film: ');
-let evaluation = prompt('How do eveluation it? ');
+let endFilm; 
+let evaluation;
 
-personalMovieDB.movies[endFilm] = evaluation;
+for (let i=1;i<=numberOfFilms;i++){
+   endFilm = prompt('One the last film: ');
+   if(endFilm =='' || endFilm.length > 50 ){
+      i--;
+   }
+   else{
+     evaluation = prompt('How do eveluation it? ');
 
+      personalMovieDB.movies[endFilm] = evaluation;
+   }
+   
+}
 console.log(personalMovieDB);
 
-
+if (personalMovieDB.count<10){
+   alert('Do you like films?');
+}
+else{
+   if (personalMovieDB.count>=10 && personalMovieDB.count<=30) {
+      alert('You classic spectator');
+   } else {
+      alert('You is moviegoer?');
+   }
+}
 
 
 /* 
@@ -99,7 +118,7 @@ let i=1;
     IndTwo--
  }
  console.log(result); */
- console.log('1 ---------------------');
+ /* console.log('1 ---------------------');
  
  const lines = 5;
  let result = '';
@@ -116,4 +135,4 @@ let i=1;
     y = y + '*';
  }
  console.log('2 -------------\n---5--------');
- console.log(result);
+ console.log(result); */
