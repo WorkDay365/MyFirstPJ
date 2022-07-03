@@ -1,41 +1,85 @@
 'use strict';
-let numberOfFilms = prompt('How many movies have you watched? ');
+let numberOfFilms;
+let genres =[];
+function start(){
+   numberOfFilms = +prompt('How many movies have you watched? ','');
+   
+   while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+      numberOfFilms = +prompt('How many movies have you watched? ','');
+   }
+}
 
-let personalMovieDB = new Object();
-personalMovieDB.count = numberOfFilms;
-personalMovieDB.movies = new Object();
-personalMovieDB.actors = new Object();
-personalMovieDB.genres = new Array();
-personalMovieDB.privat = false;
+start();
+
+let personalMovieDB = {
+   count: numberOfFilms,
+   movies: {},
+   actors: {},
+   genres: [],
+   privat: false
+}
+
 
 
 let endFilm; 
 let evaluation;
 
-for (let i=1;i<=numberOfFilms;i++){
-   endFilm = prompt('One the last film: ');
-   if(endFilm =='' || endFilm.length > 50 ){
-      i--;
+function  rememberMyFilms() {
+   for (let i=1;i<2;i++){
+      const a = prompt('One the last film: ',''),
+            b = prompt('How do eveluation it? ','');
+      if(a !=null && b !=null && a != '' && b != '' && a.length > 50 ){
+         personalMovieDB.movies[a] = b;
+         console.log('done');
+      }
+      else{
+         i--;
+         console.log('error');
+      }
+      
+   } 
+
+}
+
+function detectedPersonalLevel(params) {
+   
+if (personalMovieDB.count<10){
+   console.log('Do you like films?');
+}
+else if (personalMovieDB.count>=10 && personalMovieDB.count<=30) {
+      console.log('You classic spectator');
+   }
+ else if (personalMovieDB.count>30) {
+      console.log('You is moviegoer?');
    }
    else{
-     evaluation = prompt('How do eveluation it? ');
-
-      personalMovieDB.movies[endFilm] = evaluation;
+      console.log('Error');
    }
-   
 }
+
+function showMyDB(hidden) {
+   if (!hidden) {
+      console.log(personalMovieDB); 
+   }
+}
+
+function writeYourGenres() {
+   for (let i=1; i<4;i++) {
+      genres.push(prompt('What are your like genre on namber ${i} ?',''));
+   }
+}
+
+showMyDB(personalMovieDB.privat);
+
+
+
+
+rememberMyFilms();
+
+detectedPersonalLevel();
+
 console.log(personalMovieDB);
 
-if (personalMovieDB.count<10){
-   alert('Do you like films?');
-}
-else{
-   if (personalMovieDB.count>=10 && personalMovieDB.count<=30) {
-      alert('You classic spectator');
-   } else {
-      alert('You is moviegoer?');
-   }
-}
 
 
 /* 
