@@ -2,12 +2,13 @@
 let numberOfFilms;
 let genres =[];
 function start(){
-   numberOfFilms = +prompt('How many movies have you watched? ','');
+   //let numberOfFilms; //= +prompt('How many movies have you watched? ','');
    
    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
       numberOfFilms = +prompt('How many movies have you watched? ','');
    }
 }
+
 
 start();
 
@@ -28,7 +29,7 @@ function  rememberMyFilms() {
    for (let i=1;i<2;i++){
       const a = prompt('One the last film: ',''),
             b = prompt('How do eveluation it? ','');
-      if(a !=null && b !=null && a != '' && b != '' && a.length > 50 ){
+      if(a !=null && b !=null && a != '' && b != '' && a.length < 50 ){
          personalMovieDB.movies[a] = b;
          console.log('done');
       }
@@ -44,7 +45,7 @@ function  rememberMyFilms() {
 function detectedPersonalLevel(params) {
    
 if (personalMovieDB.count<10){
-   console.log('Do you like films?');
+   console.log('Do you like2 films?');
 }
 else if (personalMovieDB.count>=10 && personalMovieDB.count<=30) {
       console.log('You classic spectator');
@@ -65,7 +66,8 @@ function showMyDB(hidden) {
 
 function writeYourGenres() {
    for (let i=1; i<4;i++) {
-      genres.push(prompt('What are your like genre on namber ${i} ?',''));
+        
+      genres.push(prompt(`What are your like genre on namber  ${i} ?`,``));
    }
 }
 
@@ -78,7 +80,9 @@ rememberMyFilms();
 
 detectedPersonalLevel();
 
-console.log(personalMovieDB);
+writeYourGenres() ;
+console.log(genres); 
+//console.log(personalMovieDB);
 
 
 
